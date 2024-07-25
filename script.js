@@ -11,7 +11,7 @@ function submitForm(event) {
         jsonObject[key] = value;
     });
 
-    console.log('Form Data:', jsonObject); // Log form data for debugging
+    console.log('Form Data:', jsonObject); // Log form data
 
     // Send AJAX request to your backend
     fetch('http://localhost:8080/register', {
@@ -21,15 +21,17 @@ function submitForm(event) {
         },
         body: JSON.stringify(jsonObject),
     })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Response Data:', data); // Log response data for debugging
-            if (data.id) {
-                document.getElementById('message').textContent = 'Registration successful!';
-                form.reset(); // Reset form after successful submission
-            } else {
-                document.getElementById('message').textContent = 'Registration failed. Please try again later.';
+        .then(response => {
+            console.log('Response:', response); // Log response
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
             }
+            return response.text();
+        })
+        .then(data => {
+            console.log('Data:', data); // Log response data
+            document.getElementById('message').textContent = data;
+            form.reset(); // Reset form after successful submission
         })
         .catch(error => {
             console.error('Error:', error);
