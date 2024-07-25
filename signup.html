@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Researcher Registration Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+    
+    <form id="registrationForm" name="formfill">
+      <center><h1>Register</h1></center>  
+        <div class="input-box">
+            
+        <input type="text" id="fname" name="fname" placeholder=" first name" ><span class="icon2" ><i class="fa fa-user" style="margin-right: 20px; "></i></span><br><br>
+       
+        
+        <input type="text" id="lname" name="lname" placeholder="Last Name"required><span class="icon" ><i class="fa fa-user" style="margin-right: 10px;"></i></span> <br><br>
+       
+        
+        <input type="email" id="email" name="email" placeholder="Email"required><span class="icon" ><i class="fa-solid fa-envelope" style="margin-right: 10px;"></i></span> <br><br>
+
+        
+        <input type="password" id="password" name="password" placeholder="Password" required><span class="icon2" ><i class="fa-solid fa-lock" style="margin-right: 20px;"></i></span><br><br>
+
+        
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required><span class="icon2" ><i class="fa-solid fa-lock" style="margin-right: 20px;"></i></span></i><br><br>
+       
+        
+        
+
+        
+      <br><br>
+
+        <button type="button" onclick="registerUser()">Signup</button>
+    </form>
+
+    <div id="loginPrompt" class="group">
+        <p>Already have an account? <a href="./signin.html">Signin</a></p>
+    </div>
+</div>
+</div>   
+</div>
+    <script>
+        function validatePassword(password) {
+           
+            var passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+            return passwordRegex.test(password);
+        }
+
+        function validateName(name) {
+           
+            var nameRegex = /^[a-zA-Z\s]+$/;
+            return nameRegex.test(name);
+        }
+
+        function validateEmail(email) {
+           
+            var emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+            return emailRegex.test(email);
+        }
+
+
+        function registerUser() {
+            var fname = document.getElementById("fname").value;
+            var lname = document.getElementById("lname").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
+           
+
+            if (!validateName(fname) || !validateName(lname)) {
+                alert("Please Enter Valid name");
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match");
+                return;
+            }
+
+            if (!validatePassword(password)) {
+                alert("Password must be at least 8 characters long and contain at least 1 number and 1 special symbol.");
+                return;
+            }
+
+            if (!validateEmail(email)) {
+                alert("Email must have a gmail.com domain.");
+                return;
+            }
+
+           
+
+            var userData = {
+                fname: fname,
+                lname: lname,
+                email: email,
+                password: password,
+                confirmPassword:confirmPassword
+            };
+
+           
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "http://localhost:8080/signup");
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    alert("User registered successfully");
+                    window.location.href = "http://localhost:8080/signin.html"; 
+                } else {
+                    alert("Failed to register user: " + xhr.responseText);
+                }
+            };
+            xhr.send(JSON.stringify(userData));
+        }
+    </script>
+</body>
+</html>

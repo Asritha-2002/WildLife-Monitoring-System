@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications From Officers</title>
+    <style>
+        .monitoring-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            font-family: Arial, Helvetica, sans-serif;
+            color: rgb(19, 19, 90);
+        }
+      
+        .monitoring-item {
+            border: 1px solid #ddd;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            flex: 1 1 calc(50% - 40px); /* Two items per row, accounting for margin */
+            box-sizing: border-box;
+        }
+        .monitoring-item img {
+            max-width: 40%;
+            height: auto;
+            border-radius: 1em;
+        }
+        .monitoring-item video{
+           margin-left: 6px;
+            max-width:20em; 
+            border-radius: 1em;
+        }
+        .monitoring-item h2 {
+            font-size: 1.2em;
+            margin-bottom: 0.5em;
+        }
+        .monitoring-item p {
+            font-size: 1em;
+        }
+        h1{
+            text-align: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: rgb(57, 57, 160);
+        }
+    </style>
+</head>
+<body>
+    <h1>Notifications From Officers</h1>
+    <div id="monitoring-data" class="monitoring-container"></div>
+
+    <script>
+        async function fetchMonitoringData() {
+            try {
+                const response = await fetch('/api/v1/videos');
+                const data = await response.json();
+                console.log(data);
+                displayData(data);
+            } catch (error) {
+                console.error('Error fetching monitoring data:', error);
+            }
+        }
+
+        function displayData(data) {
+            const container = document.getElementById('monitoring-data');
+            container.innerHTML = ''; // Clear any existing data
+
+            data.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('monitoring-item');
+
+                const title = document.createElement('h2');
+                title.textContent = `Officer Name: ${item.rName} - Animal Name: ${item.aName}`;
+               
+                itemDiv.appendChild(title);
+
+                const description = document.createElement('p');
+                description.textContent = item.description;
+                itemDiv.appendChild(description);
+
+                if (item.image) {
+                    const img = document.createElement('img');
+                    img.src = `data:image/jpeg;base64,${item.image}`;
+                    itemDiv.appendChild(img);
+                }
+
+                if (item.video) {
+                    const video = document.createElement('video');
+                    video.controls = true;
+                    video.src = `data:video/mp4;base64,${item.video}`;
+                    itemDiv.appendChild(video);
+                }
+
+                container.appendChild(itemDiv);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchMonitoringData);
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Officer Dashboard</title>
+    <style>
+        .container{
+             background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxITEhUSEhIWFhUXFxcXFxcXGBgXGBcXGBcXGBUfFxgaHSggGholHRgXITEhJSkrLi4uFx8zODMtNygtLisBCgoKDQ0NDg0NDjcZFRkrLSstLS0tNzcrKystNysrKy0tKy03KysrKysrKy0rLSsrKy0rKysrLSsrKysrKysrK//AABEIAJoBSAMBIgACEQEDEQH/xAAaAAADAQEBAQAAAAAAAAAAAAABAgMEAAYF/8QAKhAAAgECAgoDAQEBAAAAAAAAAAECEfAhMQMSQVFhcYGRobHB0eHxEyL/xAAXAQEBAQEAAAAAAAAAAAAAAAAAAQID/8QAFhEBAQEAAAAAAAAAAAAAAAAAABEB/9oADAMBAAIRAxEAPwD04aHIaKNMuSHUb+joq++RXVuubKmiolIq/R0YlIxvtmaY10UOkcleYyRUANBkgpALQFB6HNEISgKD0BQLCUBQeh1CLCUA0UocokVJwvMH+beFO1C6hs/vhHPR/mLaXZkVnUbwDGF4GhaOvXZhaR0YVxw6OiX1/QqcIOnf1gXgvzrl8+QQhe2vW+9SkY33y45BFY/XbZ8lou+1CKRVMCqYdYmmHWvIBmwVEcvr+COf8pd1AfW4+wawjnezwJr3s6gV11n7Z2teP0RU+++i90vyB6S3s6gaNe8fQ0ZrLxiZdfn2xvoUU+3Rb7uoGlSHTIRnj9bcv0pB7AqyYxOLHQDHAOA8VFfA8UCCu+ZTRrLr5AeMPnttxLRj8bdp0FtfBvlj5wLwjv8Anjl2CFULf4OoX+FIxt0XpFFA0zEYxGUSqhz7e6hURSJqN1Dq3sKqIdXn6/RSI6oNW6l9UGpz7VIsQcQapdwvL1gH/Ph9+AM+qBQu8jR/nz7Yd2d/nX+/eSCoKPLuhlC9hb/Ph1xuo60fPrg/GJBFaLZTDbXBY888B4w87nj2qXjo17488thX/Nbn2q92NcArI9Dv9d8MneQXo9+fPHHrVLua1o7rTHoqVC9Hw35bN+QGP/O8Grveco37xNUtEuPVKlOqr2FcLrX2EQoMO48BZIBGxZSuh0n8knLLLbw37EAzndrdiTek3VywwfhdCUpfuHS+hOWk43wqBZ6S8U7veK9Jjj9uvRYYENfl3b51xoI53w9AaHpPvL5oBaW1ld1M7m+HH9Oc316v26hWmM813ww3qrpj1/R46S2mq7VS95iU72di2jnTjitrr4YG+E+2y9v5swL6N5ct2zZ8mHRt7+FeVFWq5+jTopdvWX34CNkGURGD+PWJZBTI444DxsVfTAto995V+GS0a+PGJbRrbzp0WNQNGjXhV8Pziaowvhs64EIL3+JeTVFfC7b+4Q8Y2h1AMUUUQJ6tsbVKUv8AodUCeqdqlNUKQE9U7UK6oVECKja2DLR3XqVUb/gyheztQKz/AOfLh/Rlo+H14+DRS21j3DqAZ/8AP8CtGr33eZo1OHn5oFRu8QJxht2/1jxh2HjEZIBIxDqFKB1QqDgK4XsNDQriEZXG/BGUb8G1wu1iRkq7vD30rQDFNdq+2/n56ZtJ9LPLNI26XR1VPrbjltphmZdKu744b9vXuEYpvLx7It/BonlXk/CfLIztcHuASoEFRG1QFaA11K6nBrxTnhSoygnt9dXhh3e3MKklfAfRrdnkvXyh46PN057l0pkUhDpjTFr5AfQrHDJ/a9UNWi2U4U7Y+72xhHzTos36p3xNMI0phs9/CoEX0au+ReN+yML7VKxAdHARwHkdH6p9/ZfQrLh5y29icF8eaJl4K74r2Uq+hWCpw7/9Ub4V8s1aNXwVftEIL660Zqivvq618kFor2UihIlUgOSOoMghS0DQZIKQAoMldBkhlEBUhtUZIagUqQaDUOIFodQZgKAMA4BkFICCiDqHUGCBNxIzi+tOXVUNNBZRAxaWNa9fezw+xl0ipjubbw2OrdKvPE+hpVtvbXh6M2l0ez3t2Pw8yo+VOFOS28pLNZYV8cTPOH8p33H0tJB+q5Z9+X2ZnBbOHjdt/gRk1HaovGJSMLzpgs8OyLKHBX+XurGNN9tN5dMWBGOjxweW2mWxJJumY60b68ap16Ye9ppjollnTffPzyKLRWsfd8ArJ/nXbTjT1sp8V5DRg/xJLli23ndTZqY5/wB57en4ctFb23RdgM8YXvypnXD4RWMbx6lVDfW7/odUIVIYIGAThanFHnIK/C+y2jXmv4SiVh/PBWWnR+/naaIe7XpmaD9fd9C8Xsut1IrTF36KojFlIsiqIZCIdBTIdIVIokAYoZRDFX2GSIoJBoNQACsAzEkBzYKgbF1ihqnawlTtYIrUZMipDJkVZMZElIdMBxaBTOAnNGfSR2cccd1fk0yvyQ0v850f8AxSjgt9p7KVrtIShud5Gya3fjxTvmZpXfYrKSRXRql7FiIuZSF+Pn2BaEOPPnx7opCN2hNH/L7FYhR1TnG/oapzATVA0OxWAjJso2Sk77BHVOFbOKPPxfxfYpB389jLGXEpo5ZbsnhlXiVlthK+FMTRGXDcqYXlQwwlvvN04ZF4T43jX4A2xkWjK/ZkhLvXlVPHApGV9CLmtUWVi74maMrz3VLKV+SK0RKRIRd3eJeLvkFUQ6EQ6IogYRWwFkTkx5v0Sk77sBZMVs5sRu8ioNQ6xKoK3SvgC2sMpc+pncr/AA5T4ga1IeMjJGe/Lll1KKd579oGpO8BtYzxnxHUryIppZX0Jze2+hznxJzeX03hjQCE38ds/XszTl6SXx4K6SWSt4qOHFr2ZtJLHnu5/Ve3AqOb7DRn1398Ma0M+ty50+WsQa9/oR9CM88NvDB9968lv9Lyrdo+fDSce6b3bN2e1lo6TD2sF4puqFbda8Mu+QdYyLScb5Da/Xo35eQGjWu8hW7wJOd53sAp8Qh5Mm2drXShNyAZs4nrXSvg4DzSkUg78/BFDw+/BU1phL19l4u+DMsX787C8WaZa4S7X9lYS2cPRljfQtCV+gVqhK/JeDvkZIO7vAvF7OmzfQy1jXF/PdFou75mWEr9eGWg/wC88CNNKkOmQjK/YykRVqiNk3K8OgJTvZwxoAZTvySnK/0E5XgScr8fZUNJiNiuXEVsIZsVyFbFbAZu8wa5JsXXA0RmUjO/0yJ3hsHjO+IG2MykZGOM+N8cClQLud3sJ6R7O/oVyFkwqWlltx/uOe/L8Msnx3Po8PdS8nt6+Kmaaz7ffkIk2KpUDJCsKopWyylx+eBmqFMI1rS8737hlO95lUr2DqV4fIGrX43zO/0Mynf9Dr8b7YlF9a/wSU+foi5XgJKfHtR8ueBBZzt7DjN/px9U+DgPkpDwXgZRGUTUSjBX3Kxu+oqRRIrOqRKQZNFIhFoO+yLxlfQzQZWLJrWNUZX4KxkZVLjbKKRGmlT5fI2vwT4flTL/AKcaeDv9ON/RBq17y8Ev9N1PjDd98SL0lvER6Tji+ON8EIVeU/qtK+a4E5T4/OwjLSXXIRz6XvAvrg1iOvxDrAU1hWxHO8gOQHSd9BXIEpCNgUTGjK+5FMZP6KjRGV3zLKV7jNGXH+5FYyArUDYusdUillfclJX5KsRoCEok3E0SRNxAi0AdoVgdUKYoCoprHaxOoHIqU7l08fOJGU76LPDodJkpzvsyLhnPgn0rTpU4hKRxFV1QqO4dINDbnQSGSDQIBQyFGQVRMonfkjEZMitEZMOtwv2QqHWv9BVv9LvE5ze6/gg5AbESrSnf8VGK9I7/AAlrCtlhVXLh6FcydQORFqqmw63O+WRn1jta6EaX/wBLwBKb3O+LIOd1F1/zb4Iq7lfnkLrEXO8gOQRdMZSM6lf6UUjSNMZXfIopfPTsZFIrGV0oBpU7wC5cHfMza+H9Dr3nhfoyq9QVJax2vfsB5CM5yFbAWV30EaGbEYCgOYGzTOubFbObFbKhZP59kp37HbJSvwiLhWzgM4ivoUCccbc3HHHAEKAEjWChhUEimqdUU5FZGoKnAZUdUBzOAAGzjmRcBsRsLEvyZbwspAcjtt7mSeZGj63H5CpCSYY5K94RRSHTJaP7HRplZMOsTHf2A+scpCR+wQeJGldYbWJSY6yIqmsCosTmBzYjDIEr8FQrFYwrKzpWKxmTZULJk5FH9+0TZFwjOOZxlp//2Q==') ;
+  
+    background-repeat: no-repeat;
+    background-size: 100em 100em;
+    margin:5em;
+   
+        }
+        .head img{
+            border-radius: 9em;
+            margin-left: 18em;
+             margin-top: 3em;
+            
+             box-shadow: 0 0 5px 2px wheat;
+            }
+            .head h1{
+                    margin-left: 12em;
+                    margin-top: -1.5em;
+                    background: linear-gradient(to right,
+     rgb(46, 46, 132),rgb(45, 191, 196),rgb(57, 131, 133));
+     background-clip: text;
+     
+     color: transparent;
+     animation: animated 5s linear infinite;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+}
+@keyframes animated{
+  to{background-position-x:161px;}
+}
+           
+            .navigation{
+                margin-top: 2em;
+                margin-left: 12em;
+                font-size: 1.5em;
+                
+            }
+            
+            .navigation li a{
+                text-decoration: none;
+                color: rgb(13, 128, 90);
+                margin-left: 2.1em;;
+            }
+            .navigation li a:hover{
+                color:rgb(246, 11, 11);
+            }
+            main img{
+                margin-left: 26em;
+                margin-top: 2em;
+            }
+            main p{
+                margin-left: 20em;
+                margin-right: 18em;
+               text-align: justify;
+                padding-bottom: 2em;
+            }
+            #back{
+   
+                position:  absolute;
+                margin-top: 7.5rem;
+                margin-left: 24.5rem;
+               
+               }
+               #back:hover{
+                   background-color: hsl(33, 100%, 88%);
+                   border: none;
+                   color:black;
+                   font-weight: bold;
+               }
+               #forward:hover{
+                   background-color: hsl(33, 100%, 88%);
+                   border: none;
+                   color:black;
+                   font-weight: bold;
+               }
+               #forward{
+                 
+                   position:  absolute;
+                margin-top: 7.5rem;
+                margin-left: -1.3rem;
+               }
+               #image{
+                  align-items: center;
+                  text-align: center;
+                 margin-left: 24.5rem;
+                 border-radius: 0.2rem;
+                 width: 20rem;
+                 height: 12rem;
+               }
+    </style>
+</head>
+<body>
+    <form class="container">
+    <header class="head">
+    <img src="./img2.jpg" alt="logo" title="logo" height="60em" width="80em"><h1>Welcome to Wildlife Guard</h1>
+        <nav class="navigation">
+            <ul type="none">
+                <li>
+                    <a href="UMonitoring.html">Monitoring</a>
+                    <a href="UNotification.html">Notification</a>
+                    <a href="./login.html">Logout</a>
+                    
+                </li>
+            </ol>
+        </nav>
+    </header>
+    <main>
+        <button id="back">‹</button>
+        <img src="img.jpg" id="image">
+        <button id="forward">›</button>
+       <p>
+        Welcome to the Officer Dashboard. Here, you can manage and oversee operations related to wildlife monitoring and research. In the Notification Module, you can view requests from researchers, keeping you updated on their latest queries and requirements. In the Monitoring Module, you can respond to these requests using the provided response form, allowing you to share the necessary data with researchers efficiently.
+       </p> </main></form>
+       <script src="home.js"></script>
+</body>
+</html>
